@@ -22,7 +22,7 @@ class Solution {
             }
         }
 
-        return max;1
+        return max;
 
     }
 }
