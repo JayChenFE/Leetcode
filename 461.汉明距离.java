@@ -9,9 +9,12 @@ class Solution {
     public int hammingDistance(int x, int y) {
         int xor = x ^ y, count = 0;
 
-        for (int i = 0; i < 32; i++) {
-            count += (xor >> i) & 1;
+        while (xor != 0) {
+            count += 1;
+            // remove the rightmost bit of '1'
+            xor = xor & (xor - 1);
         }
+
         return count;
 
     }
