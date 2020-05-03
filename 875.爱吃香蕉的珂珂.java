@@ -8,15 +8,15 @@
 class Solution {
     public int minEatingSpeed(int[] piles, int H) {
 
-        int left = 0;
+        int left = 1;
         int right = getMax(piles);
 
         while (left < right) {
             int middle = left + (right - left) >> 1;
             if (canEat(piles, H, middle)) {
-                left = middle + 1;
-            } else {
                 right = middle;
+            } else {
+                left = middle + 1;
             }
         }
 
@@ -36,7 +36,7 @@ class Solution {
     private boolean canEat(int[] piles, int H, int speed) {
         int total = 0;
         for (int pile : piles) {
-            total += (pile + speed - 1) / speed;
+            total += pile % speed == 0 ? pile / speed : pile / speed + 1;
         }
         return total >= H;
     }
